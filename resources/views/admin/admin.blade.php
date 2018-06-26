@@ -5,7 +5,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Bank</title>
+  <title>Bank Admin Panel</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="{{asset('/vendors/iconfonts/mdi/css/materialdesignicons.min.css')}}">
   <link rel="stylesheet" href="{{asset('/vendors/css/vendor.bundle.base.css')}}">
@@ -24,10 +24,10 @@
     <!-- partial:../../partials/_navbar.html -->
     <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-        <a class="navbar-brand brand-logo" href="../../index.html">
+        <a class="navbar-brand brand-logo" style="color:#000" href="{{url('/')}}">
           Bank
         </a>
-        <a class="navbar-brand brand-logo-mini" href="../../index.html">
+        <a class="navbar-brand brand-logo-mini" style="color:#000" href="{{url('/')}}">
          Bank
         </a>
       </div>
@@ -130,9 +130,14 @@
                 Manage Accounts
               </a>
              
-              <a class="dropdown-item">
+              <a class="dropdown-item" href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
                 Sign Out
               </a>
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
             </div>
           </li>
         </ul>
@@ -178,6 +183,20 @@
             <a class="nav-link" href="{{url('/accounts')}}">
               <i class="menu-icon mdi mdi-sticker"></i>
               <span class="menu-title">Accounts</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="{{url('/users')}}">
+              <i class="menu-icon mdi mdi-account-multiple"></i>
+              <span class="menu-title">Users</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="{{url('/transactions')}}">
+              <i class="menu-icon mdi mdi-chart-line"></i>
+              <span class="menu-title">Transactions</span>
             </a>
           </li>
           <!--
@@ -255,6 +274,9 @@
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
+
+          @yield('content')
+
         </div>
         <!-- content-wrapper ends -->
         <!-- partial:../../partials/_footer.html -->

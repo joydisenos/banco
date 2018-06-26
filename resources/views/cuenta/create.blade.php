@@ -18,10 +18,9 @@
         <div class="input-field col s6">
            
             <select id="tipo" name = "tipo" class="validate">
-                <option value="1">Option 1</option>
-                <option value="2">Option 2</option>
-                <option value="2">Option 2</option>
-                <option value="3">Option 3</option>
+                <option value="Basic">Basic Account</option>
+                <option value="Saving Account">Saving Account</option>
+                <option value="Money Market Account">Money Market Account</option>
             </select>
             <label for="tipo">Type</label>
         </div>

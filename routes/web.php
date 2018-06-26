@@ -33,5 +33,8 @@ Route::group(['middleware'=> 'auth'],function(){
 
 Route::group(['middleware'=> 'auth'],function(){
 	Route::get('/admin', 'AdminController@index');
+	Route::get('/accounts', 'AdminController@accounts');
+	Route::get('/users', 'AdminController@users');
+	Route::get('/transactions', 'AdminController@transactions');
   	
 });
