@@ -26,4 +26,12 @@ Route::group(['middleware'=> 'auth'],function(){
   	Route::post('cuenta/{id}/update','CuentaController@update');
   	Route::get('cuenta/{id}/delete','CuentaController@destroy');
   	Route::get('cuenta/{id}/deleteMsg','CuentaController@DeleteMsg');
+
+
+});
+
+
+Route::group(['middleware'=> 'auth'],function(){
+	Route::get('/admin', 'AdminController@index');
+  	
 });
