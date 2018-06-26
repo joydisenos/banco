@@ -171,11 +171,11 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        Bank\Providers\AppServiceProvider::class,
+        Bank\Providers\AuthServiceProvider::class,
+        // Bank\Providers\BroadcastServiceProvider::class,
+        Bank\Providers\EventServiceProvider::class,
+        Bank\Providers\RouteServiceProvider::class,
 
         Amranidev\ScaffoldInterface\ScaffoldInterfaceServiceProvider::class,
         Amranidev\Ajaxis\AjaxisServiceProvider::class,

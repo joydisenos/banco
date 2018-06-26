@@ -4,38 +4,28 @@
 
 <div class = 'container'>
     <h1>
-        Create cuenta
+        Create Account
     </h1>
-    <form method = 'get' action = '{!!url("cuenta")!!}'>
-        <button class = 'btn blue'>cuenta Index</button>
+    <form method = 'get' action = '{!!url("/home")!!}'>
+        <button class = 'btn blue'>Home</button>
     </form>
     <br>
     <form method = 'POST' action = '{!!url("cuenta")!!}'>
         <input type = 'hidden' name = '_token' value = '{{ Session::token() }}'>
+       
+            <input id="user_id" name = "user_id" type="hidden" value="{{Auth::user()->id}}" class="validate">
+           
         <div class="input-field col s6">
-            <input id="user_id" name = "user_id" type="text" class="validate">
-            <label for="user_id">user_id</label>
+           
+            <select id="tipo" name = "tipo" class="validate">
+                <option value="1">Option 1</option>
+                <option value="2">Option 2</option>
+                <option value="2">Option 2</option>
+                <option value="3">Option 3</option>
+            </select>
+            <label for="tipo">Type</label>
         </div>
-        <div class="input-field col s6">
-            <input id="tipo" name = "tipo" type="text" class="validate">
-            <label for="tipo">tipo</label>
-        </div>
-        <div class="input-field col s6">
-            <input id="descripcion" name = "descripcion" type="text" class="validate">
-            <label for="descripcion">descripcion</label>
-        </div>
-        <div class="input-field col s6">
-            <input id="detalles" name = "detalles" type="text" class="validate">
-            <label for="detalles">detalles</label>
-        </div>
-        <div class="input-field col s6">
-            <input id="estatus" name = "estatus" type="text" class="validate">
-            <label for="estatus">estatus</label>
-        </div>
-        <div class="input-field col s6">
-            <input id="disponible" name = "disponible" type="text" class="validate">
-            <label for="disponible">disponible</label>
-        </div>
+        
         <button class = 'btn red' type ='submit'>Create</button>
     </form>
 </div>

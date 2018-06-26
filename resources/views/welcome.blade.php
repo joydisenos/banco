@@ -1,56 +1,12 @@
-<!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-<html lang="en" class="no-js">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Bank</title>
-        <meta name="description" content="" />
-        <meta name="keywords" content="" />
-        <meta name="author" content="" />
-        <!-- Bootstrap -->
-        <script src="js/modernizr.custom.js"></script>
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/jquery.fancybox.css" rel="stylesheet">
-        <link href="css/flickity.css" rel="stylesheet" >
-        <link href="css/animate.css" rel="stylesheet">
-        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-        <link href='http://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'>
-        <link href="css/styles.css" rel="stylesheet">
-        <link href="css/queries.css" rel="stylesheet">
-        <!-- Facebook and Twitter integration -->
-        <meta property="og:title" content=""/>
-        <meta property="og:image" content=""/>
-        <meta property="og:url" content=""/>
-        <meta property="og:site_name" content=""/>
-        <meta property="og:description" content=""/>
-        <meta name="twitter:title" content="" />
-        <meta name="twitter:image" content="" />
-        <meta name="twitter:url" content="" />
-        <meta name="twitter:card" content="" />
-        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
-    </head>
-    <body>
-        <!--[if lt IE 7]>
-        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-        <!-- open/close -->
-        <header>
+@extends('layouts.principal')
+@section('content')
+ <header>
             <section class="hero">
                 <div class="texture-overlay"></div>
                 <div class="container">
                     <div class="row nav-wrapper">
                         <div class="col-md-6 col-sm-6 col-xs-6 text-left">
-                            <a href="#"><!--<img src="img/logo-white.png" alt="Boxify Logo">-->Bank</a>
+                            <a href="{{url('/')}}"><!--<img src="img/logo-white.png" alt="Boxify Logo">-->Bank</a>
                         </div>
                         <div class="col-md-6 col-sm-6 col-xs-6 text-right navicon">
                             <p>MORE</p><a id="trigger-overlay" class="nav_slide_button nav-toggle" href="#"><span></span></a>
@@ -59,7 +15,7 @@
                     <div class="row hero-content">
                         <div class="col-md-12">
                             <h1 class="animated fadeInDown">An Exclusive, Premium Bank System</h1>
-                            <a href="http://tympanus.net/codrops/?p=22554" class="use-btn animated fadeInUp">Register</a> <a href="#featuresSlider" class="learn-btn animated fadeInUp">Watch more <i class="fa fa-arrow-down"></i></a>
+                            <a href="{{url('/register')}}" class="use-btn animated fadeInUp">Register</a> <a href="#featuresSlider" class="learn-btn animated fadeInUp">Watch more <i class="fa fa-arrow-down"></i></a>
                         </div>
                     </div>
                 </div>
@@ -98,12 +54,12 @@
                                     <li>
                                         <h1>Multi-Purpose User Centric</h1>
                                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a lorem quis neque interdum consequat ut sed sem. Duis quis tempor nunc. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
-                                        <p><a href="http://tympanus.net/codrops/?p=22554" class="arrow-btn">Find out! <i class="fa fa-long-arrow-right"></i></a></p>
+                                        <p><a href="#" class="arrow-btn">Find out! <i class="fa fa-long-arrow-right"></i></a></p>
                                     </li>
                                     <li>
                                         <h1>Made for people</h1>
                                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a lorem quis neque interdum consequat ut sed sem. Duis quis tempor nunc. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
-                                        <p><a href="http://tympanus.net/codrops/?p=22554" class="arrow-btn">Find out! <i class="fa fa-long-arrow-right"></i></a></p>
+                                        <p><a href="#" class="arrow-btn">Find out! <i class="fa fa-long-arrow-right"></i></a></p>
                                     </li>
                                 </ul>
                         </div>
@@ -204,10 +160,14 @@
                                 <div class="avatar"><img src="img/avatar.png" alt="User Avatar"></div>
                                 <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a lorem quis neque interdum consequat ut sed sem. Duis quis tempor nunc." - Steve Jobs</p>
                                 <div class="logo-quote">
-                                    <a href="http://tympanus.net/codrops/"><img src="img/codrops-logo.png" alt="Codrops Logo"></a>
+                                    <a href="#">See more</a>
                                 </div>
                             </blockquote>
-                            <a href="http://tympanus.net/codrops/?p=22554" class="download-btn">Login <i class="fa fa-sign-in"></i></a>
+                            @guest
+                            <a href="{{url('/login')}}" class="download-btn">Login <i class="fa fa-sign-in"></i></a>
+                            @else
+                            <a href="{{url('/home')}}" class="download-btn">My Bank <i class="fa fa-sign-in"></i></a>
+                            @endguest
                         </div>
                     </div>
                 </div>
@@ -342,58 +302,4 @@
             </div>
         </section>
 -->
-
-
-        <footer>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-5">
-                        <h1 class="footer-logo">
-                        <!--<img src="img/logo-blue.png" alt="Footer Logo Blue">-->
-                        Bank
-                        </h1>
-                        <p>A bank System <a href="{{url('/')}}"><em>Bank</em></a></p>
-                    </div>
-                    <div class="col-md-7">
-                        <ul class="footer-nav">
-                            <li><a href="#about">About</a></li>
-                            <li><a href="#features">Features</a></li>
-                            
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </footer>
-        <div class="overlay overlay-boxify">
-            <nav>
-                <ul>
-                    <li><a href="#about"><i class="fa fa-heart"></i>About</a></li>
-                    <li><a href="#features"><i class="fa fa-flash"></i>Features</a></li>
-                </ul>
-                <ul>
-                    <li><a href="#screenshots"><i class="fa fa-user"></i>Register</a></li>
-                    <li><a href="#download"><i class="fa fa-sign-in"></i>Login</a></li>
-                </ul>
-            </nav>
-        </div>
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src="js/min/toucheffects-min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-        <script src="js/flickity.pkgd.min.js"></script>
-        <script src="js/jquery.fancybox.pack.js"></script>
-        <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="js/retina.js"></script>
-        <script src="js/waypoints.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/min/scripts-min.js"></script>
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-        <script>
-        (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-        e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-        e.src='//www.google-analytics.com/analytics.js';
-        r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-        ga('create','UA-XXXXX-X');ga('send','pageview');
-        </script>
-    </body>
-</html>
+@endsection

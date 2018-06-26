@@ -30,7 +30,7 @@ class Cuentas extends Migration
         
         $table->String('detalles');
         
-        $table->integer('estatus');
+        $table->integer('estatus')->default(0);
         
         $table->float('disponible');
         

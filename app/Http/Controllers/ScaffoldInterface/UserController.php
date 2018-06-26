@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\ScaffoldInterface;
+namespace Bank\Http\Controllers\ScaffoldInterface;
 
-use App\Http\Controllers\Controller;
+use Bank\Http\Controllers\Controller;
 use Hash;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
@@ -17,7 +17,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = \App\User::all();
+        $users = \Bank\User::all();
 
         return view('scaffold-interface.users.index', compact('users'));
     }
@@ -41,7 +41,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $user = new \App\User();
+        $user = new \Bank\User();
 
         $user->email = $request->email;
         $user->name = $request->name;
@@ -61,7 +61,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user = \App\User::findOrfail($id);
+        $user = \Bank\User::findOrfail($id);
         $roles = Role::all()->pluck('name');
         $permissions = Permission::all()->pluck('name');
         $userRoles = $user->roles;
@@ -79,7 +79,7 @@ class UserController extends Controller
      */
     public function update(Request $request)
     {
-        $user = \App\User::findOrfail($request->user_id);
+        $user = \Bank\User::findOrfail($request->user_id);
 
         $user->email = $request->email;
         $user->name = $request->name;
@@ -99,7 +99,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $user = \App\User::findOrfail($id);
+        $user = \Bank\User::findOrfail($id);
 
         $user->delete();
 
@@ -115,7 +115,7 @@ class UserController extends Controller
      */
     public function addRole(Request $request)
     {
-        $user = \App\User::findOrfail($request->user_id);
+        $user = \Bank\User::findOrfail($request->user_id);
         $user->assignRole($request->role_name);
 
         return redirect('scaffold-users/edit/'.$request->user_id);
@@ -130,7 +130,7 @@ class UserController extends Controller
      */
     public function addPermission(Request $request)
     {
-        $user = \App\User::findorfail($request->user_id);
+        $user = \Bank\User::findorfail($request->user_id);
         $user->givePermissionTo($request->permission_name);
 
         return redirect('scaffold-users/edit/'.$request->user_id);
@@ -145,7 +145,7 @@ class UserController extends Controller
      */
     public function revokePermission($permission, $user_id)
     {
-        $user = \App\User::findorfail($user_id);
+        $user = \Bank\User::findorfail($user_id);
 
         $user->revokePermissionTo(str_slug($permission, ' '));
 
@@ -161,7 +161,7 @@ class UserController extends Controller
      */
     public function revokeRole($role, $user_id)
     {
-        $user = \App\User::findorfail($user_id);
+        $user = \Bank\User::findorfail($user_id);
 
         $user->removeRole(str_slug($role, ' '));
 

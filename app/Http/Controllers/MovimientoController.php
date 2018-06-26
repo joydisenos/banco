@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Bank\Http\Controllers;
 
 use Illuminate\Support\Facades\App;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Movimiento;
+use Bank\Http\Controllers\Controller;
+use Bank\Movimiento;
 use Amranidev\Ajaxis\Ajaxis;
 use URL;
 

@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Bank\Http\Controllers;
 
 use Illuminate\Support\Facades\App;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Cuenta;
+use Bank\Http\Controllers\Controller;
+use Bank\Cuenta;
 use Amranidev\Ajaxis\Ajaxis;
 use URL;
 
@@ -58,16 +58,16 @@ class CuentaController extends Controller
         $cuenta->tipo = $request->tipo;
 
         
-        $cuenta->descripcion = $request->descripcion;
+        $cuenta->descripcion = 'Descripcion de la cuenta';
 
         
-        $cuenta->detalles = $request->detalles;
+        $cuenta->detalles = 'Detalles de la cuenta';
 
         
-        $cuenta->estatus = $request->estatus;
+        $cuenta->estatus = 0;
 
         
-        $cuenta->disponible = $request->disponible;
+        $cuenta->disponible = 0;
 
         
         
@@ -83,7 +83,7 @@ class CuentaController extends Controller
                          'test-event',
                         ['message' => 'A new cuenta has been created !!']);
 
-        return redirect('cuenta');
+        return redirect('home')->with('status','Your Account was created successfull!, you must wait to evaluate and approve your request');
     }
 
     /**

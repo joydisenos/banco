@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\ScaffoldInterface;
+namespace Bank\Http\Controllers\ScaffoldInterface;
 
-use App\Http\Controllers\Controller;
+use Bank\Http\Controllers\Controller;
 
 /**
  * Class AppController.
@@ -18,7 +18,7 @@ class AppController extends Controller
      */
     public function dashboard()
     {
-        $users = \App\User::all()->count();
+        $users = \Bank\User::all()->count();
         $roles = \Spatie\Permission\Models\Role::all()->count();
         $permissions = \Spatie\Permission\Models\Permission::all()->count();
         $entities = \Amranidev\ScaffoldInterface\Models\Scaffoldinterface::all();

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\ScaffoldInterface;
+namespace Bank\Http\Controllers\ScaffoldInterface;
 
-use App\Http\Controllers\Controller;
+use Bank\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 

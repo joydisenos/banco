@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace Bank;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -20,6 +20,11 @@ class Cuenta extends Model
     
 	
     protected $table = 'cuentas';
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
 	
 }
