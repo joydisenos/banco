@@ -23,6 +23,9 @@
                           <th>
                             Amount
                           </th>
+                          <th>
+                            Date
+                          </th>
                           
                           
                         </tr>
@@ -35,13 +38,26 @@
                           </td>
                           
                           <td>
-                            {{$movimiento->tipo}}
+
+                            @if($movimiento->tipo_operacion == 1)
+                              Deposit
+                              @elseif($movimiento->tipo_operacion == 2)
+                              Transfer
+                              @endif
+
                           </td>
                           <td>
-							{{$movimiento->tipo}}
+							               @if($movimiento->estatus == 0)
+                              Verifying Transaction
+                              @elseif($movimiento->estatus == 1)
+                              <span style="color:green;">Verified</span>
+                              @endif
                           </td>
                           <td>
-                            {{$movimiento->disponible}}
+                            {{$movimiento->monto}}
+                          </td>
+                          <td>
+                            {{$movimiento->created_at->format('d/m/Y')}}
                           </td>
                          
                          

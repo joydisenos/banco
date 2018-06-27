@@ -3,6 +3,11 @@
 namespace Bank\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Bank\Cuenta;
+use Bank\Movimiento;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
+
 
 class UserController extends Controller
 {
@@ -95,5 +100,45 @@ class UserController extends Controller
     public function transactions()
     {
         return view ('user.transactions');
+    }
+
+    public function deposit($id)
+    {
+
+        $cuenta = Cuenta::findOrFail($id);
+
+        return view ('user.deposit',compact('cuenta'));
+    }
+
+    public function depositfund(Request $request)
+
+    {
+        $movimiento = new Movimiento();
+
+        $movimiento->user_id = Auth::user()->id;
+
+        $movimiento->cuenta_id = $request->cuenta_id;
+
+        $movimiento->cuenta_destino_id = 0;
+
+        $movimiento->tipo_operacion = 1;
+
+        $movimiento->monto = $request->monto;
+
+        $movimiento->estatus = 0;
+
+        $details = Input::get('detalles');
+
+        $detalles = implode(",", $details);
+
+        $movimiento->detalles = $detalles;
+
+        $movimiento->descripcion = '';
+
+        $movimiento->observaciones = '';
+
+        $movimiento->save();
+
+        return redirect('user/home')->with('status','Deposit Successfull, our team will evaluate to aprove the transaction');
     }
 }

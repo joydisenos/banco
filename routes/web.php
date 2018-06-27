@@ -31,6 +31,8 @@ Route::group(['middleware'=> 'auth'],function(){
     Route::get('transactions', 'UserController@transactions');
     Route::get('new/account', 'CuentaController@create');
     Route::post('new/account', 'CuentaController@store');
+    Route::get('{id}/deposit', 'UserController@deposit');
+    Route::post('new/transaction', 'UserController@depositfund');
 
   });
 

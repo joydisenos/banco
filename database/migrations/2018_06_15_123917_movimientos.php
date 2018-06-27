@@ -25,8 +25,12 @@ class Movimientos extends Migration
         $table->integer('user_id');
         
         $table->integer('cuenta_id');
+
+        $table->integer('cuenta_destino_id');
         
         $table->integer('tipo_operacion');
+
+        $table->float('monto');
         
         $table->integer('estatus');
         

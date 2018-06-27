@@ -7,7 +7,7 @@ use Bank\Cuenta;
 use Bank\Movimiento;
 use Bank\User;
 
-class adminController extends Controller
+class AdminController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -43,6 +43,7 @@ class adminController extends Controller
 
         return view('admin.transactions',compact('movimientos'));
     }
+
 
     /**
      * Show the form for creating a new resource.
