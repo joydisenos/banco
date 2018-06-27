@@ -1,40 +1,69 @@
-@extends('layouts.principal')
+@extends('user.user')
 
 @section('content')
-@include('includes.header2')
-<section id="transactions">
 <div class="container">
-    <div class="row">
-        <div class="col-md-12">
+	<div class="row">
+		<div class="col-md-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+<a href="{{url('user/new/account')}}" class="btn btn-primary btn-fw mb-2">New Account</a>
 
-                <div class="panel-body">
-                    @include('includes.notifications')
-
-				@if(count(Auth::user()->cuentas))
-                    <h2>Accounts List</h2>
-					<div class="container">
-					@foreach(Auth::user()->cuentas as $cuenta)
-					<a href="{{url('/account').'/'.$cuenta->id}}">
-						<div class="row">
-							<div class="col-xs-3">
-								{{$cuenta->id}}
-							</div>
-							<div class="col-xs-6">
-								{{$cuenta->tipo}}
-							</div>
-							<div class="col-xs-3">
-								{{$cuenta->disponible}}
-							</div>
-						</div>
-					</a>
-					@endforeach
-					</div>
-				@endif
-                  
-                </div>
-          
-        </div>
-    </div>
-</div>
-</section>
+<div class="table-responsive">
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th>
+                            #
+                          </th>
+                         
+                          <th>
+                            Type
+                          </th>
+                          <th>
+                            Status
+                          </th>
+                          <th>
+                            Available
+                          </th>
+                          <th>
+                            Deposit
+                          </th>
+                          
+                        </tr>
+                      </thead>
+                      <tbody>
+						@foreach(Auth::user()->cuentas as $cuenta)
+						 <tr>
+                          <td>
+                            {{$cuenta->id}}
+                          </td>
+                          
+                          <td>
+                            {{$cuenta->tipo}}
+                          </td>
+                          <td>
+                            @if($cuenta->estatus == 0)
+                            Verifying Account
+                            @elseif($cuenta->estatus == 1)
+                            Active
+                            @endif
+                          </td>
+                          <td>
+                            {{$cuenta->disponible}}
+                          </td>
+                          <td>
+                          	<a href="{{url('user').'/'.$cuenta->id.'/deposit'}}" class="btn btn-info btn-fw">Deposit</a>
+                          </td>
+                         
+                        </tr>
+						@endforeach
+                      </tbody>
+                        
+                    </table>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
 @endsection

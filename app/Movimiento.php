@@ -17,5 +17,10 @@ class Movimiento extends Model
 	
     protected $table = 'movimientos';
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
 	
 }

@@ -3,6 +3,9 @@
 namespace Bank\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Bank\Cuenta;
+use Bank\User;
+use Bank\Movimiento;
 
 class adminController extends Controller
 {
@@ -13,7 +16,25 @@ class adminController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.index');
+    }
+
+    public function accounts()
+    {
+        $cuentas = Cuenta::all();
+        return view('admin.accounts',compact('cuentas'));
+    }
+
+    public function users()
+    {
+        $usuarios = User::all();
+        return view('admin.usuarios',compact('usuarios'));
+    }
+
+    public function transactions()
+    {
+        $movimientos = Movimiento::all();
+        return view('admin.transactions',compact('movimientos'));
     }
 
     /**

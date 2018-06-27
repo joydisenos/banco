@@ -21,12 +21,16 @@ Auth::routes();
 
 //cuenta usuario
 Route::group(['middleware'=> 'auth'],function(){
-	Route::get('/home', 'HomeController@index')->name('home');
-  	Route::resource('cuenta','CuentaController');
-  	Route::post('cuenta/{id}/update','CuentaController@update');
-  	Route::get('cuenta/{id}/delete','CuentaController@destroy');
-  	Route::get('cuenta/{id}/deleteMsg','CuentaController@DeleteMsg');
 
+  Route::prefix('user')->group(function(){
+
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::resource('cuenta','CuentaController');
+    Route::get('profile', 'UserController@profile');
+    Route::get('update', 'UserController@updateprofile');
+    Route::get('transactions', 'UserController@transactions');
+
+  });
 
 });
 

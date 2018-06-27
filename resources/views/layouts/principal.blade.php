@@ -80,7 +80,7 @@
                 </ul>
                 @else
                 <ul>
-                    <li><a href="{{url('/home')}}"><i class="fa fa-sign-in"></i>My Bank</a></li>
+                    <li><a href="{{url('/user/home')}}"><i class="fa fa-sign-in"></i>My Bank</a></li>
                     <li><a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="fa fa-sign-out"></i>Log Out</a></li>
                 </ul>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -90,15 +90,15 @@
             </nav>
         </div>
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src="js/min/toucheffects-min.js"></script>
+        <script src="{{asset('js/min/toucheffects-min.js')}}"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-        <script src="js/flickity.pkgd.min.js"></script>
-        <script src="js/jquery.fancybox.pack.js"></script>
+        <script src="{{asset('js/flickity.pkgd.min.js')}}"></script>
+        <script src="{{asset('js/jquery.fancybox.pack.js')}}"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="js/retina.js"></script>
-        <script src="js/waypoints.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/min/scripts-min.js"></script>
+        <script src="{{asset('js/retina.js')}}"></script>
+        <script src="{{asset('js/waypoints.min.js')}}"></script>
+        <script src="{{asset('js/bootstrap.min.js')}}"></script>
+        <script src="{{asset('js/min/scripts-min.js')}}"></script>
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
         (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=

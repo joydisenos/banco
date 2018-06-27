@@ -5,7 +5,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Bank Admin Panel</title>
+  <title>Bank User Panel</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="{{asset('/vendors/iconfonts/mdi/css/materialdesignicons.min.css')}}">
   <link rel="stylesheet" href="{{asset('/vendors/css/vendor.bundle.base.css')}}">
@@ -115,21 +115,18 @@
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
               <a class="dropdown-item p-0">
                 <div class="d-flex border-bottom">
-                  <div class="py-3 px-4 d-flex align-items-center justify-content-center">
-                    <i class="mdi mdi-bookmark-plus-outline mr-0 text-gray"></i>
+                  
+                  <div class="py-3 px-4 d-flex align-items-center justify-content-center ">
+                    <i class="mdi mdi-account-outline mr-0 text-gray"></i>User
                   </div>
-                  <div class="py-3 px-4 d-flex align-items-center justify-content-center border-left border-right">
-                    <i class="mdi mdi-account-outline mr-0 text-gray"></i>
-                  </div>
-                  <div class="py-3 px-4 d-flex align-items-center justify-content-center">
-                    <i class="mdi mdi-alarm-check mr-0 text-gray"></i>
-                  </div>
+                  
                 </div>
               </a>
-              <a class="dropdown-item mt-2">
-                Manage Accounts
+
+              <a class="dropdown-item" href="{{url('user/profile')}}">
+                Profile
               </a>
-             
+            
               <a class="dropdown-item" href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -162,7 +159,7 @@
                 <div class="text-wrapper">
                   <p class="profile-name">Welcome, {{title_case(Auth::user()->name)}}</p>
                   <div>
-                    <small class="designation text-muted">Admin</small>
+                    <small class="designation text-muted">User</small>
                     <span class="status-indicator online"></span>
                   </div>
                 </div>
@@ -172,29 +169,17 @@
               </button>-->
             </div>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{url('/admin')}}">
-              <i class="menu-icon mdi mdi-television"></i>
-              <span class="menu-title">Dashboard</span>
-            </a>
-          </li>
+          
 
            <li class="nav-item">
-            <a class="nav-link" href="{{url('/accounts')}}">
+            <a class="nav-link" href="{{url('/user/home')}}">
               <i class="menu-icon mdi mdi-sticker"></i>
               <span class="menu-title">Accounts</span>
             </a>
           </li>
-
+          
           <li class="nav-item">
-            <a class="nav-link" href="{{url('/users')}}">
-              <i class="menu-icon mdi mdi-account-multiple"></i>
-              <span class="menu-title">Users</span>
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="{{url('/transactions')}}">
+            <a class="nav-link" href="{{url('/user/transactions')}}">
               <i class="menu-icon mdi mdi-chart-line"></i>
               <span class="menu-title">Transactions</span>
             </a>
@@ -274,7 +259,7 @@
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
-          @include('includes.notifications')
+		  @include('includes.notifications')
           @yield('content')
 
         </div>
@@ -301,7 +286,7 @@
   <!-- Plugin js for this page-->
   <!-- End plugin js for this page-->
   <!-- inject:js -->
-  <script src="{{asset('/js/off-canvas.js')}}"></script>
+   <script src="{{asset('/js/off-canvas.js')}}"></script>
   <script src="{{asset('/js/misc.js')}}"></script>
   <!-- endinject -->
   <!-- Custom js for this page-->

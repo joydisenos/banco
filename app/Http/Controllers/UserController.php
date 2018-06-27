@@ -81,4 +81,19 @@ class UserController extends Controller
     {
         //
     }
+
+    public function profile()
+    {
+        return view ('user.profile');
+    }
+
+    public function updateprofile()
+    {
+        return view ('user.data');
+    }
+
+    public function transactions()
+    {
+        return view ('user.transactions');
+    }
 }

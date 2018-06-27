@@ -1,8 +1,9 @@
-@extends('admin.admin')
+@extends('user.user')
+
 @section('content')
 <div class="container">
-  <div class="row">
-    <div class="col-md-12 grid-margin stretch-card">
+	<div class="row">
+		<div class="col-md-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
 <div class="table-responsive">
@@ -12,32 +13,38 @@
                           <th>
                             #
                           </th>
+                         
                           <th>
-                            Name
+                            Type
                           </th>
                           <th>
-                            Email
+                            Status
                           </th>
                           <th>
-                            Edit
+                            Amount
                           </th>
+                          
+                          
                         </tr>
                       </thead>
                       <tbody>
-						@foreach($usuarios as $usuario)
+						@foreach(Auth::user()->movimientos as $movimiento)
 						 <tr>
                           <td>
-                            {{$usuario->id}}
+                            {{$movimiento->id}}
+                          </td>
+                          
+                          <td>
+                            {{$movimiento->tipo}}
                           </td>
                           <td>
-                            {{$usuario->name}}
+							{{$movimiento->tipo}}
                           </td>
                           <td>
-                            {{$usuario->email}}
+                            {{$movimiento->disponible}}
                           </td>
-                          <td>
-                            <a href="" class="btn btn-primary">View</a>
-                          </td>
+                         
+                         
                         </tr>
 						@endforeach
                       </tbody>

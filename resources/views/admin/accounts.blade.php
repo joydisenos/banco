@@ -1,6 +1,11 @@
 @extends('admin.admin')
 @section('content')
-<div class="table-responsive">
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+      <div class="table-responsive">
                     <table class="table table-bordered">
                       <thead>
                         <tr>
@@ -25,8 +30,8 @@
                         </tr>
                       </thead>
                       <tbody>
-						@foreach($cuentas as $cuenta)
-						 <tr>
+            @foreach($cuentas as $cuenta)
+             <tr>
                           <td>
                             {{$cuenta->id}}
                           </td>
@@ -46,9 +51,15 @@
                             <a href="" class="btn btn-primary">Edit</a>
                           </td>
                         </tr>
-						@endforeach
+            @endforeach
                       </tbody>
                         
                     </table>
                   </div>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+
 @endsection
