@@ -163,10 +163,11 @@
                     <span class="status-indicator online"></span>
                   </div>
                 </div>
+
               </div>
-              <!--<button class="btn btn-success btn-block">New Project
+              <button class="btn btn-success btn-block">New Transaction
                 <i class="mdi mdi-plus"></i>
-              </button>-->
+              </button>
             </div>
           </li>
           

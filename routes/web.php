@@ -29,6 +29,8 @@ Route::group(['middleware'=> 'auth'],function(){
     Route::get('profile', 'UserController@profile');
     Route::get('update', 'UserController@updateprofile');
     Route::get('transactions', 'UserController@transactions');
+    Route::get('new/account', 'CuentaController@create');
+    Route::post('new/account', 'CuentaController@store');
 
   });
 

@@ -38,7 +38,7 @@ class CuentaController extends Controller
     {
         $title = 'Create - cuenta';
         
-        return view('cuenta.create');
+        return view('user.create');
     }
 
     /**
@@ -83,7 +83,7 @@ class CuentaController extends Controller
                          'test-event',
                         ['message' => 'A new cuenta has been created !!']);
 
-        return redirect('home')->with('status','Your Account was created successfull!, you must wait to evaluate and approve your request');
+        return redirect('/user/home')->with('status','Your Account was created successfull!, you must wait to evaluate and approve your request');
     }
 
     /**
