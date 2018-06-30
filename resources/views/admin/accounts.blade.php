@@ -25,7 +25,7 @@
                             Available
                           </th>
                           <th>
-                            Edit
+                            Activate / Deactivate
                           </th>
                         </tr>
                       </thead>
@@ -33,7 +33,7 @@
             @foreach($cuentas as $cuenta)
              <tr>
                           <td>
-                            {{$cuenta->id}}
+                            {{hashid()->encode($cuenta->id)}}
                           </td>
                           <td>
                             {{$cuenta->user->name}}
@@ -48,7 +48,13 @@
                             {{$cuenta->disponible}}
                           </td>
                           <td>
-                            <a href="" class="btn btn-primary">Edit</a>
+                            @if($cuenta->estatus == 0)
+                            <a href="{{url('/account/status').'/'.$cuenta->id.'/'.'1'}}" class="btn btn-primary btn-fw">Activate</a>
+                            @elseif($cuenta->estatus == 1)
+                            <a href="{{url('/account/status').'/'.$cuenta->id.'/'.'2'}}" class="btn btn-danger btn-fw">Deactivate</a>
+                            @elseif($cuenta->estatus == 2)
+                            <a href="{{url('/account/status').'/'.$cuenta->id.'/'.'1'}}" class="btn btn-dark btn-fw">Activate</a>
+                            @endif
                           </td>
                         </tr>
             @endforeach

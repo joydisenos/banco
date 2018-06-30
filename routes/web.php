@@ -33,16 +33,24 @@ Route::group(['middleware'=> 'auth'],function(){
     Route::post('new/account', 'CuentaController@store');
     Route::get('{id}/deposit', 'UserController@deposit');
     Route::post('new/transaction', 'UserController@depositfund');
+    Route::get('new/transfer', 'UserController@transfer');
+    Route::post('new/transfer', 'UserController@debit');
 
   });
 
 });
 
 
+
+// Admin Routes 
+
 Route::group(['middleware'=> 'auth'],function(){
 	Route::get('/admin', 'AdminController@index');
 	Route::get('/accounts', 'AdminController@accounts');
 	Route::get('/users', 'AdminController@users');
-	Route::get('/transactions', 'AdminController@transactions');
+  Route::get('/transactions', 'AdminController@transactions');
+  Route::get('/account/status/{id}/{status}', 'AdminController@activate');
+  Route::get('/profile/{id}', 'AdminController@profile');
+	Route::get('/transaction/{id}/{status}', 'AdminController@operacion');
   	
 });

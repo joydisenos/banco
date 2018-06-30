@@ -22,5 +22,15 @@ class Movimiento extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function origen()
+    {
+        return $this->belongsTo(Cuenta::class , 'cuenta_id');
+    }
+
+    public function destino()
+    {
+        return $this->belongsTo(Cuenta::class , 'cuenta_destino_id');
+    }
+
 	
 }

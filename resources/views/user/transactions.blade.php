@@ -21,7 +21,7 @@
                             Status
                           </th>
                           <th>
-                            Amount
+                            Amount ($)
                           </th>
                           <th>
                             Date
@@ -34,7 +34,7 @@
 						@foreach(Auth::user()->movimientos as $movimiento)
 						 <tr>
                           <td>
-                            {{$movimiento->id}}
+                            {{hashid()->encode($movimiento->id)}}
                           </td>
                           
                           <td>
@@ -51,6 +51,8 @@
                               Verifying Transaction
                               @elseif($movimiento->estatus == 1)
                               <span style="color:green;">Verified</span>
+                              @elseif($movimiento->estatus == 2)
+                              <span style="color:red;">Denied</span>
                               @endif
                           </td>
                           <td>

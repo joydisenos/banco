@@ -36,7 +36,7 @@
                             {{$usuario->email}}
                           </td>
                           <td>
-                            <a href="" class="btn btn-primary">View</a>
+                            <a href="{{url('profile').'/'.$usuario->id}}" class="btn btn-primary">View</a>
                           </td>
                         </tr>
 						@endforeach

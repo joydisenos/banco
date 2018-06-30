@@ -35,7 +35,7 @@
 						@foreach(Auth::user()->cuentas as $cuenta)
 						 <tr>
                           <td>
-                            {{$cuenta->id}}
+                            {{hashid()->encode($cuenta->id)}}
                           </td>
                           
                           <td>

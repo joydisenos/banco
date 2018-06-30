@@ -1,4 +1,4 @@
-@extends('user.user')
+@extends('admin.admin')
 @section('content')
 
 
@@ -7,7 +7,7 @@
 		<div class="col-md-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                 <div class="display-2">{{title_case(Auth::user()->name)}}</div>
+                 <div class="display-2">{{title_case($user->name)}}</div>
                  
                   <div class="row">
                     <div class="col-md-6">
@@ -33,7 +33,7 @@
                           E-mail
                         </p>
                         <p class="mb-2">
-                         {{Auth::user()->email}}
+                         {{$user->email}}
                         </p>
                        
                       </address>
@@ -41,17 +41,15 @@
                   </div>
                 </div>
                 <div class="card-body">
-                  <h4 class="card-title">Accounts {{Auth::user()->cuentas->count()}}</h4>
+                  <h4 class="card-title">Accounts {{$user->cuentas->count()}}</h4>
                   <p class="card-description">
                     Member Since
-                    <code>{{Auth::user()->created_at->format('d/m/Y')}}</code>
+                    <code>{{$user->created_at->format('d/m/Y')}}</code>
                   </p>
                   <!--<p class="lead">
                     For personal use
-                  </p>
-                  <a href="{{url('user/update')}}" class="btn btn-primary btn-fw">Complete Profile</a>
-
-                  -->
+                  </p>-->
+                 
                 </div>
               </div>
               </div>

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Bank\Cuenta;
 use Bank\Movimiento;
 use Bank\User;
+use ElfSundae\Laravel\Hashid\Facades\Hashid;
 
 class AdminController extends Controller
 {
@@ -23,7 +24,7 @@ class AdminController extends Controller
     public function accounts()
 
     {
-        $cuentas = Cuenta::all();
+        $cuentas = Cuenta::orderBy('estatus')->get();
 
         return view('admin.accounts',compact('cuentas'));
     }
@@ -36,12 +37,60 @@ class AdminController extends Controller
         return view('admin.usuarios',compact('usuarios'));
     }
 
+    public function profile($id)
+    {
+        $user = User::findOrFail($id);
+
+        return view('admin.profile',compact('user'));
+    }
+
     public function transactions()
 
     {
         $movimientos = Movimiento::all();
+        $pendientes = Movimiento::where('estatus',0)->get();
 
-        return view('admin.transactions',compact('movimientos'));
+        return view('admin.transactions',compact('movimientos', 'pendientes'));
+    }
+
+    public function operacion($id , $status)
+    {
+        $movimiento = Movimiento::findOrFail($id);
+
+        if($status == 1){
+
+            $cuentaDestino = $movimiento->cuenta_destino_id;
+
+            $cuenta = Cuenta::findOrFail($cuentaDestino);
+            $cuenta->disponible = $cuenta->disponible + $movimiento->monto;
+            $cuenta->save();
+
+            $movimiento->estatus = 1;
+            $movimiento->save();
+
+            return redirect()->back()->with('status','Transaction successfull');
+
+        }else{
+
+            $movimiento->estatus = 2;
+            $movimiento->save();
+
+            $origen = Cuenta::findOrFail($movimiento->cuenta_id);
+            $origen->disponible = $origen->disponible + $movimiento->monto;
+            $origen->save();
+
+            return redirect()->back()->with('error','Transaction Denied');
+        }
+    }
+
+    public function activate($id , $status)
+    {
+        $cuenta = Cuenta::findOrFail($id);
+        $cuenta->estatus = $status;
+        $cuenta->save();
+
+        return redirect()->back()->with('status','Account Activated
+            ');
     }
 
 

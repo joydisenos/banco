@@ -52,6 +52,7 @@
 
         <ul class="navbar-nav navbar-nav-right">
           
+          <!--
           <li class="nav-item dropdown">
             <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
               <i class="mdi mdi-bell"></i>
@@ -107,6 +108,9 @@
               </a>
             </div>
           </li>
+        -->
+
+
           <li class="nav-item dropdown d-none d-xl-inline-block">
             <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
               <span class="profile-text">{{title_case(Auth::user()->name)}}</span>
@@ -165,9 +169,11 @@
                 </div>
 
               </div>
-              <button class="btn btn-success btn-block">New Transaction
+              <form action="{{url('/user/new/transfer')}}" method="get">
+                <button type="submit" class="btn btn-success btn-block">New Transfer
                 <i class="mdi mdi-plus"></i>
               </button>
+              </form>
             </div>
           </li>
           
@@ -260,7 +266,9 @@
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
-		  @include('includes.notifications')
+      @include('includes.notifications')
+      @include('includes.error')
+		  @include('includes.errors')
           @yield('content')
 
         </div>

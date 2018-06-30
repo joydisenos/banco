@@ -52,61 +52,69 @@
 
         <ul class="navbar-nav navbar-nav-right">
           
+          
+          <?php 
+          $pendientecuenta = Bank\Cuenta::where('estatus',0)->get();
+          $pendientetransaccion = Bank\Movimiento::where('estatus',0)->get();
+
+          $notifications = count($pendientecuenta) + count($pendientetransaccion);
+           ?>
+           @if($notifications > 0)
           <li class="nav-item dropdown">
             <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
               <i class="mdi mdi-bell"></i>
-              <span class="count">4</span>
+              <span class="count">{{$notifications}}</span>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
               <a class="dropdown-item">
-                <p class="mb-0 font-weight-normal float-left">You have 4 new notifications
+                <p class="mb-0 font-weight-normal float-left">You have {{$notifications}} new notifications
                 </p>
-                <span class="badge badge-pill badge-warning float-right">View all</span>
+                
               </a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item preview-item">
+              
+              @foreach($pendientecuenta as $notificacion1)
+              <a class="dropdown-item preview-item" href="{{url('accounts')}}">
                 <div class="preview-thumbnail">
                   <div class="preview-icon bg-success">
                     <i class="mdi mdi-alert-circle-outline mx-0"></i>
                   </div>
                 </div>
                 <div class="preview-item-content">
-                  <h6 class="preview-subject font-weight-medium text-dark">Application Error</h6>
+                  <h6 class="preview-subject font-weight-medium text-dark">User {{title_case($notificacion1->user->name)}} has created an account</h6>
                   <p class="font-weight-light small-text">
-                    Just now
+                    Waiting for aproval
                   </p>
                 </div>
               </a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item preview-item">
+              @endforeach
+
+              @foreach($pendientetransaccion as $notificacion2)
+              <a class="dropdown-item preview-item" href="{{url('transactions')}}">
                 <div class="preview-thumbnail">
-                  <div class="preview-icon bg-warning">
-                    <i class="mdi mdi-comment-text-outline mx-0"></i>
+                  <div class="preview-icon bg-success">
+                    <i class="mdi mdi-alert-circle-outline mx-0"></i>
                   </div>
                 </div>
                 <div class="preview-item-content">
-                  <h6 class="preview-subject font-weight-medium text-dark">Settings</h6>
+                  <h6 class="preview-subject font-weight-medium text-dark">User {{title_case($notificacion2->user->name)}} has just transfered</h6>
                   <p class="font-weight-light small-text">
-                    Private message
+                    {{$notificacion2->created_at->format('d/m')}}
                   </p>
                 </div>
               </a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item preview-item">
-                <div class="preview-thumbnail">
-                  <div class="preview-icon bg-info">
-                    <i class="mdi mdi-email-outline mx-0"></i>
-                  </div>
-                </div>
-                <div class="preview-item-content">
-                  <h6 class="preview-subject font-weight-medium text-dark">New user registration</h6>
-                  <p class="font-weight-light small-text">
-                    2 days ago
-                  </p>
-                </div>
-              </a>
+              @endforeach
+              
+              
+
             </div>
           </li>
+          @endif
+
+
+
           <li class="nav-item dropdown d-none d-xl-inline-block">
             <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
               <span class="profile-text">{{title_case(Auth::user()->name)}}</span>
@@ -275,6 +283,7 @@
       <div class="main-panel">
         <div class="content-wrapper">
           @include('includes.notifications')
+          @include('includes.error')
           @yield('content')
 
         </div>
